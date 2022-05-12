@@ -5,7 +5,7 @@ Step by step commands to benchmark OpenOmics framework on AWS
 2.	Launch a virtual machine with EC2
   * Choose an Amazon Machine Image (AMI): Select any 64-bit (x86) AMI  (say, Ubuntu Server 20.04 LTS) from “Quick Start”.
   * Choose an Instance Type.
-  * Configure Instance: We recommended using dedicated tenancy and hyperthreading enabled.
+  * Configure Instance:
   * Add Storage: You can add storage based on the workload requirements
   * Configure security group 
   * Review and launch the instance (ensure you have/create a key to ssh login in next step)
