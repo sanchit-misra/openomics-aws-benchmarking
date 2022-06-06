@@ -1,4 +1,5 @@
-# Benchmarking OpenOmics on AWS
+# Benchmarking Open Omics Acceleration Framework on AWS
+
 Step by step commands to benchmark OpenOmics framework on AWS
 
 1.	Log in to your AWS account
@@ -12,6 +13,12 @@ Step by step commands to benchmark OpenOmics framework on AWS
 3.	Use SSH to login to the machine after the instance is up and running
   * $ ssh -i <key.pem> username@Public-DNS
 4.	The logged in AWS instance machine is now ready to use – you can download OpenOmics workloads and related datasets to be executed on this instance.
+
+## Machine configurations
+AWS c5.12xlarge: 1-instance AWS c5.12xlarge: 48 vCPUs (Cascade Lake), 96 GB total memory, ucode: 0x500320a, Ubuntu 22.04, 5.15.0-1004-aws
+AWS m5.12xlarge: 1-instance AWS c5.12xlarge: 48 vCPUs (Cascade Lake), 192 GB total memory, ucode: 0x500320a, Ubuntu 22.04, 5.15.0-1004-aws
+AWS c6i.16xlarge: 1-instance AWS c6i.16xlarge: 64 vCPUs (Ice Lake), 128 GB total memory, ucode: 0xd000331, Ubuntu 22.04, 5.15.0-1004-aws
+AWS m6i.16xlarge: 1-instance AWS m6i.16xlarge: 64 vCPUs (Ice Lake), 256 GB total memory, ucode: 0xd000331, Ubuntu 22.04, 5.15.0-1004-aws
 
 
 # Step by step instructions to benchmark baseline (bwa-mem) and OpenOmics BWA-MEM (bwa-mem2) on c5.24xlarge and m6i.16xlarge instances of AWS
@@ -118,7 +125,7 @@ Example command for ONT HG002 dataset:
 
 ## Step 3: Download and compile OpenOmics minimap2 (mm2-fast)
 ```sh
-git clone --recursive https://github.com/lh3/minimap2.git -b fast-contrib-v2.22 mm2-fast-contrib
+git clone --recursive https://github.com/bwa-mem2/mm2-fast.git -b mm2-fast-v2.22 mm2-fast-contrib
 cd mm2-fast-contrib && make multi
 ```
 
