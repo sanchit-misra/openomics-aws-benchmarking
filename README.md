@@ -16,8 +16,11 @@ Step by step commands to benchmark OpenOmics framework on AWS
 
 ## Machine configurations
 AWS c5.12xlarge: 1-instance AWS c5.12xlarge: 48 vCPUs (Cascade Lake), 96 GB total memory, ucode: 0x500320a, Ubuntu 22.04, 5.15.0-1004-aws
+
 AWS m5.12xlarge: 1-instance AWS c5.12xlarge: 48 vCPUs (Cascade Lake), 192 GB total memory, ucode: 0x500320a, Ubuntu 22.04, 5.15.0-1004-aws
+
 AWS c6i.16xlarge: 1-instance AWS c6i.16xlarge: 64 vCPUs (Ice Lake), 128 GB total memory, ucode: 0xd000331, Ubuntu 22.04, 5.15.0-1004-aws
+
 AWS m6i.16xlarge: 1-instance AWS m6i.16xlarge: 64 vCPUs (Ice Lake), 256 GB total memory, ucode: 0xd000331, Ubuntu 22.04, 5.15.0-1004-aws
 
 
