@@ -1,4 +1,4 @@
-# Benchmarking Open Omics Acceleration Framework on AWS
+# Benchmarking of Open Omics Acceleration Framework on AWS
 
 Step by step commands to benchmark OpenOmics framework on AWS
 
@@ -14,7 +14,7 @@ Step by step commands to benchmark OpenOmics framework on AWS
   * $ ssh -i <key.pem> username@Public-DNS
 4.	The logged in AWS instance machine is now ready to use – you can download OpenOmics workloads and related datasets to be executed on this instance.
 
-## Machine configurations
+## Machine configurations used for benchmarking
 AWS c5.12xlarge: 1-instance AWS c5.12xlarge: 48 vCPUs (Cascade Lake), 96 GB total memory, ucode: 0x500320a, Ubuntu 22.04, 5.15.0-1004-aws
 
 AWS m5.12xlarge: 1-instance AWS c5.12xlarge: 48 vCPUs (Cascade Lake), 192 GB total memory, ucode: 0x500320a, Ubuntu 22.04, 5.15.0-1004-aws
@@ -24,7 +24,7 @@ AWS c6i.16xlarge: 1-instance AWS c6i.16xlarge: 64 vCPUs (Ice Lake), 128 GB total
 AWS m6i.16xlarge: 1-instance AWS m6i.16xlarge: 64 vCPUs (Ice Lake), 256 GB total memory, ucode: 0xd000331, Ubuntu 22.04, 5.15.0-1004-aws
 
 
-# Step by step instructions to benchmark baseline (bwa-mem) and OpenOmics BWA-MEM (bwa-mem2) on c5.24xlarge and m6i.16xlarge instances of AWS
+# Step by step instructions to benchmark baseline (bwa-mem) and OpenOmics BWA-MEM (bwa-mem2) on m5.12xlarge and m6i.16xlarge instances of AWS
 ## Step 1: Download datasets
 Download reference genome: Homo_sapiens_assembly38.fasta
 ```sh
@@ -56,15 +56,14 @@ cd ..
 ```
 
 ## Step 4: Running baseline and OpenOmics BWA-MEM
-The c5.24xlarge instance has 48 cores. The memory available on the instance only allows for using 1 thread per core.
-On the other hand, the m6i.16xlarge instance has 32 cores. The memory available on the instance allows for using both the threads on each core.
+The m5.12xlarge instance has 24 cores, while the m6i.16xlarge instance has 32 cores. The memory available on the instances allows for using both the threads on each core.
 
 ### Run baseline BWA-MEM
 ```sh
 cd bwa-0.7.17
 ```
 Sample commands shown below:\
-For c5.24xlarge:
+For m5.12xlarge:
 ```sh
 ./bwa mem -t 48 hs_asm38/Homo_sapiens_assembly38.fasta ERR194147_1.fastq ERR194147_2.fastq > ERR194147.out.sam
 ```
@@ -78,7 +77,7 @@ For m6i.16xlarge:
 cd ../bwa-mem2-2.2.1_x86-linux
 ```
 Sample commands shown below:\
-For c5.24xlarge:
+For m5.12xlarge:
 ```sh
 ./bwa-mem2 mem -t 48 hs_asm38/Homo_sapiens_assembly38.fasta ERR194147_1.fastq ERR194147_2.fastq > ERR194147.out.sam
 ```
@@ -88,7 +87,7 @@ For m6i.16xlarge:
 ```
 
 
-# Step by step instructions to benchmark baseline (minimap2) and OpenOmics minimap2 (mm2-fast) on c5.12xlarge, c6i.16xlarge and m6i.16xlarge instances of AWS
+# Step by step instructions to benchmark baseline (minimap2) and OpenOmics minimap2 (mm2-fast) on c5.12xlarge and c6i.16xlarge instances of AWS
 
 ## Step 1: Download datasets
 Download reference genome
@@ -154,12 +153,12 @@ Example command to run HG002 ONT dataset on c5.12xlarge
 ```sh
 ./mm2-fast -ax map-ont GCA_000001405.15_GRCh38_no_alt_analysis_set.fasta.gz HG002_ONT.fastq -t 48 > mm2-fastoutput
 ```
-Example command to run HG002 ONT dataset on c6i.16xlarge or m6i.16xlarge
+Example command to run HG002 ONT dataset on c6i.16xlarge
 ```sh
 ./mm2-fast -ax map-ont GCA_000001405.15_GRCh38_no_alt_analysis_set.fasta.gz HG002_ONT.fastq -t 64 > mm2-fastoutput
 ```
 
-# Step by step instructions to benchmark OpenOmics for ATAC-Seq data analysis on multiple c5.24xlarge, c6i.32xlarge and m6i.32xlarge instances of AWS
+# Step by step instructions to benchmark OpenOmics for ATAC-Seq data analysis on multiple c5.24xlarge and c6i.32xlarge instances of AWS
 
 ## Update
 ```bash
